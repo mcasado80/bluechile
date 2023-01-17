@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'Blue Chile';
   blueRate: string = '';
   clpRate: string = '';
-  
+
   async ngOnInit(): Promise<void> {
     await this.getRates();
   }
@@ -48,33 +48,47 @@ export class AppComponent implements OnInit {
   convert(e: any) {
     let targetId = '';
     if (!e) {
-      if (this.blueForm.get('clp')?.value && this.blueForm.get('clp')?.value > 0) {
+      if (
+        this.blueForm.get('clp')?.value &&
+        this.blueForm.get('clp')?.value > 0
+      ) {
         targetId = 'clp';
-      } else if (this.blueForm.get('usd')?.value && this.blueForm.get('usd')?.value > 0) {
+      } else if (
+        this.blueForm.get('usd')?.value &&
+        this.blueForm.get('usd')?.value > 0
+      ) {
         targetId = 'usd';
-      } else if (this.blueForm.get('ars')?.value && this.blueForm.get('ars')?.value > 0) {
+      } else if (
+        this.blueForm.get('ars')?.value &&
+        this.blueForm.get('ars')?.value > 0
+      ) {
         targetId = 'ars';
       }
-    }
-    else {
+    } else {
       targetId = e.target.id;
     }
-    switch(targetId) {
+    switch (targetId) {
       case 'clp':
-        this.blueForm.patchValue({ 
+        this.blueForm.patchValue({
           usd: (this.blueForm.get('clp')?.value / +this.clpRate).toFixed(2),
-          ars: ((this.blueForm.get('clp')?.value / +this.clpRate) * +this.blueRate).toFixed(2),
+          ars: (
+            (this.blueForm.get('clp')?.value / +this.clpRate) *
+            +this.blueRate
+          ).toFixed(2),
         });
         break;
       case 'usd':
-        this.blueForm.patchValue({ 
+        this.blueForm.patchValue({
           clp: (this.blueForm.get('usd')?.value * +this.clpRate).toFixed(2),
           ars: (this.blueForm.get('usd')?.value * +this.blueRate).toFixed(2),
         });
         break;
       case 'ars':
-        this.blueForm.patchValue({ 
-          clp: ((this.blueForm.get('ars')?.value / +this.blueRate) * +this.clpRate).toFixed(2),
+        this.blueForm.patchValue({
+          clp: (
+            (this.blueForm.get('ars')?.value / +this.blueRate) *
+            +this.clpRate
+          ).toFixed(2),
           usd: (this.blueForm.get('ars')?.value / +this.blueRate).toFixed(2),
         });
         break;

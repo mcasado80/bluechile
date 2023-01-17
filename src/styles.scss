@@ -17,7 +17,7 @@
     -webkit-transform: scale(0.95);
     -ms-transform: scale(0.95);
     top: -20px;
-    opacity: .8;
+    opacity: 0.8;
     z-index: -1;
   }
 
@@ -42,7 +42,8 @@
   -webkit-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   -ms-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  label, input {
+  label,
+  input {
     transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     -ms-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -56,7 +57,8 @@
 }
 
 .material-button .shape {
-  &:before, &:after {
+  &:before,
+  &:after {
     transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     -ms-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,7 +77,11 @@
   -ms-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.material-button, .alt-2, .material-button .shape, .alt-2 .shape, .box {
+.material-button,
+.alt-2,
+.material-button .shape,
+.alt-2 .shape,
+.box {
   transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   -ms-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,7 +91,9 @@
   width: 100%;
   float: left;
 
-  label, input, .spin {
+  label,
+  input,
+  .spin {
     width: 100%;
     float: left;
   }
@@ -101,7 +109,8 @@
   }
 }
 
-.input, .button {
+.input,
+.button {
   margin-top: 30px;
   height: 70px;
 }
@@ -128,7 +137,7 @@
     top: -40px;
     border: none;
     background: transparent;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 24px;
     color: rgba(0, 0, 0, 0.8);
     font-weight: 300;
@@ -136,7 +145,7 @@
   }
 
   label {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 24px;
     color: rgba(0, 0, 0, 0.8);
     font-weight: 300;
@@ -144,14 +153,15 @@
 }
 
 .button button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 300;
 }
 
 .input {
-  &:before, .spin {
+  &:before,
+  .spin {
     width: 100%;
     height: 1px;
     position: absolute;
@@ -166,7 +176,7 @@
   }
 
   .spin {
-    background: #ED2553;
+    background: #ed2553;
     z-index: 4;
     width: 0;
   }
@@ -235,7 +245,7 @@
 
   button {
     background-color: #fff;
-    color: #ED2553;
+    color: #ed2553;
     border: none;
   }
 
@@ -253,8 +263,8 @@
     }
 
     &:hover {
-      color: #ED2553;
-      border-color: #ED2553;
+      color: #ed2553;
+      border-color: #ed2553;
     }
   }
 
@@ -291,15 +301,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #ED2553;
+  background: #ed2553;
   border-radius: 50%;
 }
 
-.material-button, .alt-2 {
+.material-button,
+.alt-2 {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: #ED2553;
+  background: #ed2553;
   position: absolute;
   top: 40px;
   right: -70px;
@@ -310,7 +321,8 @@
   -ms-transform: translate(0%, 0%);
 }
 
-.material-button .shape, .alt-2 .shape {
+.material-button .shape,
+.alt-2 .shape {
   position: absolute;
   top: 0;
   right: 0;
@@ -318,7 +330,10 @@
   height: 100%;
 }
 
-.material-button .shape:before, .alt-2 .shape:before, .material-button .shape:after, .alt-2 .shape:after {
+.material-button .shape:before,
+.alt-2 .shape:before,
+.material-button .shape:after,
+.alt-2 .shape:after {
   content: "";
   background: #fff;
   position: absolute;
@@ -329,17 +344,20 @@
   -ms-transform: translate(-50%, -50%) rotate(360deg);
 }
 
-.material-button .shape:before, .alt-2 .shape:before {
+.material-button .shape:before,
+.alt-2 .shape:before {
   width: 25px;
   height: 4px;
 }
 
-.material-button .shape:after, .alt-2 .shape:after {
+.material-button .shape:after,
+.alt-2 .shape:after {
   height: 25px;
   width: 4px;
 }
 
-.material-button.active, .alt-2.active {
+.material-button.active,
+.alt-2.active {
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%) rotate(0deg);
@@ -359,7 +377,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
 
@@ -388,7 +406,8 @@ html {
   list-style-type: none;
   outline: none;
 
-  &:after, &::before {
+  &:after,
+  &::before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;

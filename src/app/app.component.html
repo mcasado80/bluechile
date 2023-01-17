@@ -2,24 +2,54 @@
   <div class="box">
     <form [formGroup]="blueForm" (ngSubmit)="convert(null)">
       <div class="input">
-        <img alt="Chile" height="48" src="https://cdn.ipregistry.co/flags/emojitwo/cl.svg" />
-        <input id="clp" formControlName="clp" type="number" (change)="convert($event)" (keyup)="convert($event)" />
+        <img
+          alt="Chile"
+          height="48"
+          src="https://cdn.ipregistry.co/flags/emojitwo/cl.svg"
+        />
+        <input
+          id="clp"
+          formControlName="clp"
+          type="number"
+          (change)="convert($event)"
+          (keyup)="convert($event)"
+        />
       </div>
       <div class="input">
-        <img alt="USA" height="48" src="https://cdn.ipregistry.co/flags/emojitwo/us.svg" />
-        <input id="usd" formControlName="usd" type="number" (change)="convert($event)" (keyup)="convert($event)" />
+        <img
+          alt="USA"
+          height="48"
+          src="https://cdn.ipregistry.co/flags/emojitwo/us.svg"
+        />
+        <input
+          id="usd"
+          formControlName="usd"
+          type="number"
+          (change)="convert($event)"
+          (keyup)="convert($event)"
+        />
       </div>
       <div class="input">
-        <img alt="Argentina" height="48" src="https://cdn.ipregistry.co/flags/emojitwo/ar.svg" />
-        <input id="ars" formControlName="ars" type="number" (change)="convert($event)" (keyup)="convert($event)" />
+        <img
+          alt="Argentina"
+          height="48"
+          src="https://cdn.ipregistry.co/flags/emojitwo/ar.svg"
+        />
+        <input
+          id="ars"
+          formControlName="ars"
+          type="number"
+          (change)="convert($event)"
+          (keyup)="convert($event)"
+        />
       </div>
       <div class="buttons">
         <div class="button convert">
           <button (click)="convert(null)"><span>Convertir</span></button>
-       </div>
+        </div>
         <div class="button clear">
-          <button (click)="this.blueForm.reset();"><span>Borrar</span></button>
-       </div>
+          <button (click)="this.blueForm.reset()"><span>Borrar</span></button>
+        </div>
       </div>
     </form>
   </div>
