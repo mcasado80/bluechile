@@ -1,7 +1,7 @@
 {
   "name": "BlueChile",
   "short_name": "BlueChile",
-  "theme_color": "#1976d2",
+  "theme_color": "#5DCBF0",
   "background_color": "#5DCBF0",
   "display": "standalone",
   "scope": "./",
