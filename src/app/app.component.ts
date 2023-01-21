@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppUpdateService } from './services/update.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,8 @@ export class AppComponent implements OnInit {
   clpFormatter!: Intl.NumberFormat;
   arsFormatter!: Intl.NumberFormat;
   usdFormatter!: Intl.NumberFormat;
+
+  constructor(protected updateService: AppUpdateService) {}
 
   async ngOnInit(): Promise<void> {
     this.setFormatters();

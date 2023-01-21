@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AppUpdateService } from './services/update.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,7 @@ import { environment } from '../environments/environment';
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
 })],
-  providers: [],
+  providers: [AppUpdateService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
