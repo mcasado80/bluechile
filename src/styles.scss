@@ -402,10 +402,15 @@ html {
   color: grey;
   display: flex;
   justify-content: space-between;
-  a {
-    color: blue !important;
+  label {
+    max-width: 50%;
   }
-  a:hover {
+  span {
+    color: blue !important;
+    max-width: 50%;
+    text-align: right;
+  }
+  span:hover {
     cursor: pointer;
     font-weight: bold;
   }
