@@ -10,10 +10,14 @@
         <input
           id="clp"
           formControlName="clp"
-          type="number"
+          type="text"
+          inputmode="decimal"
+          maxlength="15"
           (change)="convert($event)"
           (keyup)="convert($event)"
+          (keydown)="restrictChars($event)"
         />
+        <span class="rate">{{ this.clpRate }}</span>
       </div>
       <div class="input">
         <img
@@ -24,10 +28,14 @@
         <input
           id="usd"
           formControlName="usd"
-          type="number"
+          type="text"
+          inputmode="decimal"
+          maxlength="15"
           (change)="convert($event)"
           (keyup)="convert($event)"
+          (keydown)="restrictChars($event)"
         />
+        <span class="rate">{{ this.blueRate }}</span>
       </div>
       <div class="input">
         <img
@@ -38,9 +46,12 @@
         <input
           id="ars"
           formControlName="ars"
-          type="number"
+          type="text"
+          inputmode="decimal"
+          maxlength="15"
           (change)="convert($event)"
           (keyup)="convert($event)"
+          (keydown)="restrictChars($event)"
         />
       </div>
       <div class="buttons">
@@ -52,5 +63,9 @@
         </div>
       </div>
     </form>
+    <div class="footer">
+      <label>Última actualización de cotizaciones: {{ this.lastUpdate | date:'dd/MM/YY HH:mm:ss' }}</label>
+      <a (click)="this.getRates();">Actualizar ahora</a>
+    </div>
   </div>
 </div>

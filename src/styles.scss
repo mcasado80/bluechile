@@ -396,6 +396,31 @@ html {
   -ms-transform: translate(-50%, -50%);
 }
 
+.footer {
+  margin-top: 50px;
+  font-size: x-small;
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+  a {
+    color: blue !important;
+  }
+  a:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+.rate {
+  font-size: x-small;
+  color: grey;
+  position: absolute;
+  left: 0px;
+  top: 53px;
+  text-align: center;
+  width: 48px;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

@@ -15,8 +15,13 @@ export class AppComponent implements OnInit {
   title = 'Blue Chile';
   blueRate: string = '';
   clpRate: string = '';
+  lastUpdate: Date = new Date();
+  clpFormatter!: Intl.NumberFormat;
+  arsFormatter!: Intl.NumberFormat;
+  usdFormatter!: Intl.NumberFormat;
 
   async ngOnInit(): Promise<void> {
+    this.setFormatters();
     await this.getRates();
   }
 
@@ -33,6 +38,7 @@ export class AppComponent implements OnInit {
       ).json();
       this.clpRate = clpRespnse?.serie[0]?.valor;
       localStorage.setItem('clpRate', this.clpRate);
+      this.lastUpdate = new Date();
     } catch (error) {
       const saveBlueRate = localStorage.getItem('blueRate');
       if (saveBlueRate) {
@@ -67,34 +73,83 @@ export class AppComponent implements OnInit {
     } else {
       targetId = e.target.id;
     }
-    switch (targetId) {
-      case 'clp':
-        this.blueForm.patchValue({
-          usd: (this.blueForm.get('clp')?.value / +this.clpRate).toFixed(2),
-          ars: (
-            (this.blueForm.get('clp')?.value / +this.clpRate) *
-            +this.blueRate
-          ).toFixed(2),
-        });
-        break;
-      case 'usd':
-        this.blueForm.patchValue({
-          clp: (this.blueForm.get('usd')?.value * +this.clpRate).toFixed(2),
-          ars: (this.blueForm.get('usd')?.value * +this.blueRate).toFixed(2),
-        });
-        break;
-      case 'ars':
-        this.blueForm.patchValue({
-          clp: (
-            (this.blueForm.get('ars')?.value / +this.blueRate) *
-            +this.clpRate
-          ).toFixed(2),
-          usd: (this.blueForm.get('ars')?.value / +this.blueRate).toFixed(2),
-        });
-        break;
-      default:
-        this.blueForm.reset();
-        break;
+    if (e && !e.target.value.endsWith(',')) {
+      switch (targetId) {
+        case 'clp':
+          let clpValue = this.blueForm.get('clp')?.value;
+          clpValue = clpValue.replace(/\./g, '');
+          clpValue = clpValue.replace(',', '.');
+          if (clpValue.indexOf('CLP') > -1) {
+            clpValue = clpValue.substring(4);
+          }
+          this.blueForm.patchValue({
+            usd: this.usdFormatter.format(clpValue / +this.clpRate),
+            ars: this.arsFormatter.format(
+              (clpValue / +this.clpRate) *
+              +this.blueRate
+            ),
+            clp: this.clpFormatter.format(clpValue.replace(',', '.')),
+          });
+          break;
+        case 'usd':
+          let usdValue = this.blueForm.get('usd')?.value;
+          usdValue = usdValue.replace(/\./g, '');
+          usdValue = usdValue.replace(',', '.');
+          if (usdValue.indexOf('US$') > -1) {
+            usdValue = usdValue.substring(4);
+          }
+          this.blueForm.patchValue({
+            clp: this.clpFormatter.format(usdValue * +this.clpRate),
+            ars: this.arsFormatter.format(usdValue * +this.blueRate),
+            usd: this.usdFormatter.format(usdValue.replace(',', '.')),
+          });
+          break;
+        case 'ars':
+          let arsValue = this.blueForm.get('ars')?.value;
+          arsValue = arsValue.replace(/\./g, '');
+          arsValue = arsValue.replace(',', '.');
+          if (arsValue.indexOf('$') > -1) {
+            arsValue = arsValue.substring(2);
+          }
+          this.blueForm.patchValue({
+            clp: this.clpFormatter.format(
+              (arsValue / +this.blueRate) *
+              +this.clpRate
+            ),
+            usd: this.usdFormatter.format(arsValue / +this.blueRate),
+            ars: this.arsFormatter.format(arsValue.replace(',', '.')),
+          });
+          break;
+        default:
+          this.blueForm.reset();
+          break;
+      }
     }
+  }
+
+  restrictChars(e: any) {
+    const charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode == 46 || charCode === 188 || charCode === 190) {
+      if (e.target.value.indexOf('.') === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      if (charCode > 31 &&
+        (charCode < 48 || charCode > 57) &&
+        charCode !== 96 && charCode !== 97 && charCode !== 98 &&
+        charCode !== 99 && charCode !== 100 && charCode !== 101 &&
+        charCode !== 102 && charCode !== 103 && charCode !== 104 &&
+        charCode !== 105)
+        return false;
+    }
+    return true;
+  }
+
+  setFormatters() {
+    this.clpFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'CLP', maximumSignificantDigits: 10});
+    this.arsFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumSignificantDigits: 10});
+    this.usdFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'USD', maximumSignificantDigits: 10});
   }
 }
