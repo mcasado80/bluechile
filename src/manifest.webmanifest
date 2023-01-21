@@ -2,7 +2,7 @@
   "name": "BlueChile",
   "short_name": "BlueChile",
   "theme_color": "#5DCBF0",
-  "background_color": "#5DCBF0",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
