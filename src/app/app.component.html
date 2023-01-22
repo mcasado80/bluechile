@@ -1,6 +1,7 @@
 <div class="materialContainer">
   <div class="box">
-    <form [formGroup]="blueForm" (ngSubmit)="convert(null)">
+    <form [formGroup]="blueForm" (ngSubmit)="convert(null)" autocomplete="off">
+      <input type="text" autocomplete="off" style="display: none" />
       <div class="input">
         <img
           alt="Chile"
